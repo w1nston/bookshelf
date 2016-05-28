@@ -1,0 +1,15 @@
+# Node
+node_modules
+npm-debug.log
+
+# IntelliJ
+.idea
+
+# Log files
+logs/*.log
+
+# OSX
+.DS_Store
+
+# Bundles
+dist
