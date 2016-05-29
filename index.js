@@ -2,13 +2,20 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import BookshelfApp from './app/containers/BookshelfApp';
+import { booksReducer, bookFormReducer } from './app/reducers/booksReducer';
 
-const store = createStore((state, action) => ({ message: 'I need a reducer!' }));
+const reducer = combineReducers({
+  booksReducer,
+  bookFormReducer,
+});
+
+const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>Put your App component here</div>
+    <BookshelfApp />
   </Provider>,
   document.getElementById('root')
 );
