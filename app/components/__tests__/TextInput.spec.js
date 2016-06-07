@@ -34,26 +34,26 @@ describe('TextInput', () => {
     });
   });
 
-  describe('value', () => {
+  describe('text', () => {
     it('is set in propTypes declaration', () => {
-      expect(TextInput.propTypes.value).toEqual(PropTypes.string);
+      expect(TextInput.propTypes.text).toEqual(PropTypes.string);
     });
 
     describe('when defined', () => {
-      const value = 'Value';
+      const text = 'Text';
 
       it('is set on the input element', () => {
-        const component = shallow(<TextInput value={value} />);
+        const component = shallow(<TextInput text={text} />);
         const inputElement = component.find('input');
-        expect(inputElement.props().value).toBe(value);
+        expect(inputElement.props().value).toBe(text);
       });
     });
 
     describe('when undefined', () => {
-      const value = undefined;
+      const text = undefined;
 
       it('is not setting text undefined', () => {
-        const component = shallow(<TextInput value={value} />);
+        const component = shallow(<TextInput text={text} />);
         const inputElement = component.find('input');
         expect(inputElement.text()).toNotBe('undefined');
       });

@@ -2,16 +2,11 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import BookshelfApp from './app/containers/BookshelfApp';
-import { booksReducer, bookFormReducer } from './app/reducers/booksReducer';
+import rootReducer from './app/reducers';
 
-const reducer = combineReducers({
-  booksReducer,
-  bookFormReducer,
-});
-
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <Provider store={store}>

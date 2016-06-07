@@ -2,38 +2,51 @@ import React from 'react';
 import expect, { createSpy } from 'expect';
 import { shallowWithStore } from '../../../utils/redux-spec-utils';
 import BookshelfApp from '../BookshelfApp';
-import Bookshelf from '../../components/Bookshelf';
+import BookForm from '../../components/BookForm';
 import * as booksActions from '../../actions/booksActions';
 
 describe('BookshelfApp', () => {
-  it('connects the state to a Bookshelf component', () => {
+  it('connects a BookForm component', () => {
     const component = shallowWithStore(<BookshelfApp />);
-    expect(component.type()).toBe(Bookshelf);
+    expect(component.type()).toBe(BookForm);
   });
 
   it('maps state.bookTitle to prop title', () => {
-    const state = { bookTitle: 'Book Title' };
+    const state = { bookFormReducer: { bookTitle: 'Book Title' }};
     const component = shallowWithStore(<BookshelfApp />, state);
-    expect(component.props().title).toBe(state.bookTitle);
+    expect(component.props().title).toBe(state.bookFormReducer.bookTitle);
   });
 
   it('maps state.bookAuthor to prop author', () => {
-    const state = { bookAuthor: 'Book Author' };
+    const state = { bookFormReducer: { bookAuthor: 'Book Author' }};
     const component = shallowWithStore(<BookshelfApp />, state);
-    expect(component.props().author).toBe(state.bookAuthor);
+    expect(component.props().author).toBe(state.bookFormReducer.bookAuthor);
   });
 
   it('maps dispatch to addBook', () => {
+    const title = 'Title';
+    const author = 'Author';
     const dispatch = createSpy();
     const component = shallowWithStore(<BookshelfApp />, undefined, dispatch);
-    component.props().addBook(); // TODO Add title, author?
-    expect(dispatch).toHaveBeenCalled();
+    component.props().addBook(title, author);
+    expect(dispatch).toHaveBeenCalledWith(booksActions.addBook(title, author));
   });
 
-  it('maps dispatch to clearBookForm', () => {
+  it('maps dispatch to handleTitleChange', () => {
+    const value = 'Value';
+    const event = { target: { value }};
     const dispatch = createSpy();
     const component = shallowWithStore(<BookshelfApp />, undefined, dispatch);
-    component.props().clearBookForm();
-    expect(dispatch).toHaveBeenCalledWith(booksActions.clearBookForm());
+    component.props().handleTitleChange(event);
+    expect(dispatch).toHaveBeenCalledWith(booksActions.titleChange(value));
+  });
+
+  it('maps dispatch to handleAuthorChange', () => {
+    const value = 'Value';
+    const event = { target: { value }};
+    const dispatch = createSpy();
+    const component = shallowWithStore(<BookshelfApp />, undefined, dispatch);
+    component.props().handleAuthorChange(event);
+    expect(dispatch).toHaveBeenCalledWith(booksActions.authorChange(value));
   });
 });

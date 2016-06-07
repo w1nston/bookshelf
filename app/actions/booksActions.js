@@ -13,3 +13,17 @@ export function addBook(title, author) {
     author,
   };
 }
+
+export function titleChange(title) {
+  return {
+    type: types.TITLE_CHANGE,
+    title,
+  };
+}
+
+export function authorChange(author) {
+  return {
+    type: types.AUTHOR_CHANGE,
+    author,
+  };
+}
