@@ -1,17 +1,11 @@
 import React, { PropTypes } from 'react';
 import TextInput from './TextInput';
+import SubmitButton from './SubmitButton';
 
 function BookForm(props) {
-  const {
-    title,
-    author,
-    handleTitleChange,
-    handleAuthorChange,
-    addBook,
-  } = props;
 
   function handleSubmit() {
-    addBook(title, author);
+    props.addBook(props.title, props.author);
   }
 
   return (
@@ -19,16 +13,19 @@ function BookForm(props) {
       <TextInput
         name="title"
         placeholder="Title"
-        text={title}
-        onChange={handleTitleChange}
+        text={props.title}
+        onChange={props.handleTitleChange}
       />
       <TextInput
         name="author"
         placeholder="Author"
-        text={author}
-        onChange={handleAuthorChange}
+        text={props.author}
+        onChange={props.handleAuthorChange}
       />
-      <button onClick={handleSubmit}>Add new book</button>
+      <SubmitButton
+        onSubmit={handleSubmit}
+        label="Add new book" 
+      />
     </div>
   );
 }
@@ -39,7 +36,7 @@ BookForm.propTypes = {
   author: PropTypes.string,
   handleTitleChange: PropTypes.func,
   handleAuthorChange: PropTypes.func,
-  addBook: PropTypes.func,
+  addBook: PropTypes.func.isRequired,
 };
 
 export default BookForm;

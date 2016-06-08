@@ -75,4 +75,8 @@ describe('TextInput', () => {
       });
     });
   });
+
+  describe('onChange', () => {
+    // TODO
+  });
 });
