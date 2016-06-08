@@ -3,7 +3,6 @@ import TextInput from './TextInput';
 import SubmitButton from './SubmitButton';
 
 function BookForm(props) {
-
   function handleSubmit() {
     props.addBook(props.title, props.author);
   }
@@ -24,7 +23,7 @@ function BookForm(props) {
       />
       <SubmitButton
         onSubmit={handleSubmit}
-        label="Add new book" 
+        label="Add new book"
       />
     </div>
   );
