@@ -1,19 +1,12 @@
 import { connect } from 'react-redux';
 import BookForm from '../components/BookForm';
 import * as bookActions from '../actions/booksActions';
+import { getBookTitle, getBookAuthor } from '../reducers/bookFormReducer';
 
 function mapStateToProps(state = {}) {
-  let title = '';
-  let author = '';
-
-  if (state.bookFormReducer) {
-    title = state.bookFormReducer.bookTitle;
-    author = state.bookFormReducer.bookAuthor;
-  }
-
   return {
-    title,
-    author,
+    title: getBookTitle(state),
+    author: getBookAuthor(state),
   };
 }
 

@@ -26,3 +26,19 @@ export function bookFormReducer(state = initialBookFormState, action = {}) {
       return state;
   }
 }
+
+export function getBookTitle(state) {
+  const reducer = state.bookFormReducer;
+  if (reducer) {
+    return reducer.bookTitle;
+  }
+  return '';
+}
+
+export function getBookAuthor(state) {
+  const reducer = state.bookFormReducer;
+  if (reducer) {
+    return reducer.bookAuthor;
+  }
+  return '';
+}
