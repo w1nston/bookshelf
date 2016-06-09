@@ -1,5 +1,9 @@
 import expect from 'expect';
-import { bookFormReducer } from '../bookFormReducer';
+import {
+  bookFormReducer,
+  getBookTitle,
+  getBookAuthor,
+} from '../bookFormReducer';
 import * as types from '../../constants';
 
 describe('booksReducer', () => {
@@ -80,6 +84,48 @@ describe('booksReducer', () => {
       expect(bookFormReducer(currentState, action)).toEqual({
         bookTitle: currentState.bookTitle,
         bookAuthor: action.author,
+      });
+    });
+  });
+
+  describe('selector getBookTitle', () => {
+    describe('when state.bookFormReducer is defined', () => {
+      const bookTitle = 'Title';
+      const bookFormReducer = { bookTitle };
+      const state = { bookFormReducer };
+
+      it('returns the bookTitle', () => {
+        expect(getBookTitle(state)).toBe(bookTitle);
+      });
+    });
+
+    describe('when state.bookFormReducer is undefined', () => {
+      const bookFormReducer = undefined;
+      const state = { bookFormReducer };
+
+      it('returns empty string', () => {
+        expect(getBookTitle(state)).toBe('');
+      });
+    });
+  });
+  
+  describe('selector getBookAuthor', () => {
+    describe('when state.bookFormReducer is defined', () => {
+      const bookAuthor = 'Author';
+      const bookFormReducer = { bookAuthor };
+      const state = { bookFormReducer };
+
+      it('returns the bookAuthor', () => {
+        expect(getBookAuthor(state)).toBe(bookAuthor);
+      });
+    });
+
+    describe('when state.bookFormReducer is undefined', () => {
+      const bookFormReducer = undefined;
+      const state = { bookFormReducer };
+
+      it('returns empty string', () => {
+        expect(getBookAuthor(state)).toBe('');
       });
     });
   });
