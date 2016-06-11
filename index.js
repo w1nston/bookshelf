@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import BookshelfApp from './app/containers/BookshelfApp';
+import BookshelfApp from './app/components/BookshelfApp';
 import rootReducer from './app/reducers';
 
 const store = createStore(rootReducer);
