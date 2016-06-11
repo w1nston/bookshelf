@@ -1,8 +1,7 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import * as bookActions from '../actions/booksActions';
 import { getBookAuthor } from '../reducers/bookFormReducer';
-import TextInput from '../components/TextInput';
+import BookAuthorInput from '../components/BookAuthorInput';
 
 function mapStateToProps(state) {
   return {
@@ -17,13 +16,5 @@ function mapDispatchToProps(dispatch) {
     },
   };
 }
-
-const BookAuthorInput = (props) => (
-  <TextInput
-    name="author"
-    placeholder="Author"
-    {...props}
-  />
-);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookAuthorInput);
