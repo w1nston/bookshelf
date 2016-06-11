@@ -1,8 +1,7 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import * as bookActions from '../actions/booksActions';
 import { getBookTitle } from '../reducers/bookFormReducer';
-import TextInput from '../components/TextInput';
+import BookTitleInput from '../components/BookTitleInput';
 
 function mapStateToProps(state) {
   return {
@@ -17,13 +16,5 @@ function mapDispatchToProps(dispatch) {
     },
   };
 }
-
-const BookTitleInput = (props) => (
-  <TextInput
-    name="title"
-    placeholder="Title"
-    {...props}
-  />
-);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookTitleInput);
