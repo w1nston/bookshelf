@@ -3,7 +3,7 @@ import SubmitButton from '../components/SubmitButton';
 import BookTitleInput from '../containers/BookTitleInput';
 import BookAuthorInput from '../containers/BookAuthorInput';
 
-function BookFormComponent(props) {
+function BookForm(props) {
   function handleSubmit() {
     props.onSubmit(props.title, props.author);
   }
@@ -17,11 +17,11 @@ function BookFormComponent(props) {
   );
 }
 
-BookFormComponent.displayName = 'BookForm';
-BookFormComponent.propTypes = {
+BookForm.displayName = 'BookForm';
+BookForm.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string,
   onSubmit: PropTypes.func,
 };
 
-export default BookFormComponent;
+export default BookForm;

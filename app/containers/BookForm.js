@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import * as bookActions from '../actions/booksActions';
 import { getBookTitle, getBookAuthor } from '../reducers/bookFormReducer';
-import BookFormComponent from '../components/BookFormComponent';
+import BookForm from '../components/BookForm';
 
 function mapStateToProps(state) {
   return {
@@ -18,4 +18,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookFormComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(BookForm);

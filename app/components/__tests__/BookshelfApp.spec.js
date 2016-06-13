@@ -10,7 +10,7 @@ describe('BookshelfApp', () => {
     expect(component.type()).toBe('div');
   });
 
-  it('renders a BookForm', () => {
+  it('renders a BookFormContainer', () => {
     const component = shallow(<BookshelfApp />);
     expect(component.find(BookForm).length).toBe(1);
   });
