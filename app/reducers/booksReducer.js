@@ -11,3 +11,11 @@ export function booksReducer(state = [], action = {}) {
       return state;
   }
 }
+
+export function getBookItems(state) {
+  const reducer = state.booksReducer;
+  if (reducer) {
+    return reducer;
+  }
+  return [];
+}
