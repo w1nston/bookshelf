@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import expect, { createSpy } from 'expect';
 import { shallowWithStore } from '../../../utils/redux-spec-utils';
 import BookFormContainer from '../BookForm';
