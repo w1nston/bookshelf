@@ -1,14 +1,14 @@
 import * as types from '../constants';
 
 function bookReducer(state, action) {
-  switch(action.type) {
+  switch (action.type) {
     case types.ADD_BOOK:
       return {
         bookTitle: action.title,
         bookAuthor: action.author,
       };
     default:
-      state;
+      return state;
   }
 }
 
@@ -17,7 +17,7 @@ export function booksReducer(state = [], action = {}) {
     case types.ADD_BOOK:
       return [
         bookReducer(undefined, action),
-        ...state
+        ...state,
       ];
     default:
       return state;
