@@ -1,5 +1,5 @@
 import expect from 'expect';
-import * as actions  from '../booksActions';
+import * as actions from '../booksActions';
 import * as types from '../../constants';
 
 describe('addBook', () => {

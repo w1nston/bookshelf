@@ -87,7 +87,7 @@ describe('TextInput', () => {
       it('triggers the provided callback', () => {
         const newValue = 'New value';
         const component = shallow(<TextInput onChange={onChange} />);
-        const event = { target: { value: newValue }};
+        const event = { target: { value: newValue } };
         component.find('input').simulate('change', event);
         expect(onChange).toHaveBeenCalledWith(event);
       });

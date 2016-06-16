@@ -1,5 +1,5 @@
 import React from 'react';
-import expect, { createSpy } from 'expect';
+import expect from 'expect';
 import { shallow } from 'enzyme';
 import BookshelfApp from '../BookshelfApp';
 import BookForm from '../../containers/BookForm';

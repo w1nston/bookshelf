@@ -45,7 +45,7 @@ describe('BookAuthorInput', () => {
     });
 
     describe('when defined', () => {
-      const onChange = function() {};
+      const onChange = function onChange() {};
 
       it('is passed to the TextInput component', () => {
         const component = shallow(<BookAuthorInput onChange={onChange} />);

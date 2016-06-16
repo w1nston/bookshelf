@@ -8,7 +8,7 @@ describe('BookTitleInput', () => {
   it('sets displayName', () => {
     expect(BookTitleInput.displayName).toBe('BookTitleInput');
   });
-  
+
   it('renders a TextInput component', () => {
     const component = shallow(<BookTitleInput />);
     expect(component.type()).toBe(TextInput);
@@ -45,7 +45,8 @@ describe('BookTitleInput', () => {
     });
 
     describe('when defined', () => {
-      const onChange = function() {};
+      const onChange = function onChange() {
+      };
 
       it('is passed to the TextInput component', () => {
         const component = shallow(<BookTitleInput onChange={onChange} />);

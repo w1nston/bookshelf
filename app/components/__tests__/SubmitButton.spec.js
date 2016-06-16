@@ -27,7 +27,7 @@ describe('SubmitButton', () => {
       const label = 'Label';
 
       it('is rendered', () => {
-        const component = shallow(<SubmitButton label={label}/>);
+        const component = shallow(<SubmitButton label={label} />);
         expect(component.find('button').text()).toBe(label);
       });
     });

@@ -1,7 +1,6 @@
 import expect from 'expect';
-import { booksReducer } from '../booksReducer';
 import * as types from '../../constants';
-import { getBookItems } from '../../reducers/booksReducer';
+import { booksReducer, getBookItems } from '../../reducers/booksReducer';
 
 describe('booksReducer', () => {
   describe('when state is undefined', () => {
@@ -61,8 +60,7 @@ describe('booksReducer', () => {
   describe('selector getBookItems', () => {
     describe('when state.booksReducer is defined', () => {
       const bookItem = {};
-      const booksReducer = [bookItem];
-      const state = { booksReducer };
+      const state = { booksReducer: [bookItem] };
 
       it('returns the bookItems', () => {
         expect(getBookItems(state)).toEqual([bookItem]);
@@ -70,8 +68,7 @@ describe('booksReducer', () => {
     });
 
     describe('when state.booksReducer is undefined', () => {
-      const booksReducer = undefined;
-      const state = { booksReducer };
+      const state = { booksReducer: undefined };
 
       it('returns an empty array', () => {
         expect(getBookItems(state)).toEqual([]);
