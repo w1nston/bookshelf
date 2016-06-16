@@ -5,7 +5,7 @@ export function shallowWithStore(Component, state = {}, dispatch = () => ({})) {
     store: {
       getState: () => state,
       dispatch,
-      subscribe: () => {}
+      subscribe: () => {},
     },
   };
   return shallow(Component, { context });
