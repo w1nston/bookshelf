@@ -11,7 +11,7 @@ describe('BookList', () => {
 
   it('renders a container component', () => {
     const component = shallow(<BookList />);
-    expect(component.type()).toBe('div');
+    expect(component.type()).toBe('table');
   });
 
   describe('bookItems', () => {

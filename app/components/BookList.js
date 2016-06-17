@@ -17,9 +17,9 @@ function renderBookItems(bookItems = []) {
 
 function BookList(props) {
   return (
-    <div>
+    <table>
       {renderBookItems(props.bookItems)}
-    </div>
+    </table>
   );
 }
 

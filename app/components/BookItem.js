@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react';
 
 function BookItem(props) {
   return (
-    <div className="book-item-container">
-      <div className="title">{props.title}</div>
-      <div className="author">{props.author}</div>
-    </div>
+    <tr className="book-item-row">
+      <td className="title">{props.title}</td>
+      <td className="author">{props.author}</td>
+    </tr>
   );
 }
 
