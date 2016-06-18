@@ -42,15 +42,15 @@ describe('booksReducer', () => {
         firstBookObject,
       ];
 
-      it('adds a new book object first in the state array', () => {
+      it('adds a new book object last in the state array', () => {
         expect(booksReducer(currentState, action)).toEqual([
-          {
-            bookTitle: action.title,
-            bookAuthor: action.author,
-          },
           {
             bookTitle: firstBookObject.bookTitle,
             bookAuthor: firstBookObject.bookAuthor,
+          },
+          {
+            bookTitle: action.title,
+            bookAuthor: action.author,
           },
         ]);
       });

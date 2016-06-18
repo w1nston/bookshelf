@@ -16,8 +16,8 @@ export function booksReducer(state = [], action = {}) {
   switch (action.type) {
     case types.ADD_BOOK:
       return [
-        bookReducer(undefined, action),
         ...state,
+        bookReducer(undefined, action),
       ];
     default:
       return state;
