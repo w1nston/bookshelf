@@ -18,7 +18,15 @@ function renderBookItems(bookItems = []) {
 function BookList(props) {
   return (
     <table>
-      {renderBookItems(props.bookItems)}
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        {renderBookItems(props.bookItems)}
+      </tbody>
     </table>
   );
 }

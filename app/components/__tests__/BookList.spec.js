@@ -13,6 +13,33 @@ describe('BookList', () => {
     const component = shallow(<BookList />);
     expect(component.type()).toBe('table');
   });
+  
+  it('renders a thead element to describe bookItems', () => {
+    const component = shallow(<BookList />);
+    expect(component.find('thead').length).toBe(1);
+  });
+
+  it('renders a tbody element for bookItems', () => {
+    const component = shallow(<BookList />);
+    expect(component.find('tbody').length).toBe(1);
+  });
+  
+  describe('table header', () => {
+    it('renders one table row', () => {
+      const component = shallow(<BookList />);
+      expect(component.find('thead tr').length).toBe(1);
+    });
+    
+    it('renders Title in the first child element', () => {
+      const component = shallow(<BookList />);
+      expect(component.find('thead tr th').at(0).text()).toBe('Title');
+    });
+
+    it('renders Author in the second child element', () => {
+      const component = shallow(<BookList />);
+      expect(component.find('thead tr th').at(1).text()).toBe('Author');
+    });
+  });
 
   describe('bookItems', () => {
     it('is declared in propTypes', () => {
