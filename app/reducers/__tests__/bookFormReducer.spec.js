@@ -1,20 +1,22 @@
 import expect from 'expect';
 import {
   bookFormReducer,
-  getBookTitle,
-  getBookAuthor,
+  getBookFormState,
 } from '../bookFormReducer';
 import * as types from '../../constants';
+import { Map as immutableMap } from 'immutable';
 
-describe('booksReducer', () => {
+describe('bookFormReducer', () => {
   describe('when state is undefined', () => {
     const state = undefined;
 
     it('returns an initial state', () => {
-      expect(bookFormReducer(state)).toEqual({
-        bookTitle: '',
-        bookAuthor: '',
-      });
+      expect(bookFormReducer(state)).toEqual(
+        immutableMap({
+          bookTitle: '',
+          bookAuthor: '',
+        })
+      );
     });
   });
 
@@ -34,16 +36,18 @@ describe('booksReducer', () => {
     const action = { type: types.ADD_BOOK, title: 'Title', author: 'Author' };
 
     describe('when current state contains characters', () => {
-      const currentState = {
+      const currentState = immutableMap({
         bookTitle: 'Title',
         bookAuthor: 'Author',
-      };
+      });
 
       it('returns an object with cleared fields', () => {
-        expect(bookFormReducer(currentState, action)).toEqual({
-          bookTitle: '',
-          bookAuthor: '',
-        });
+        expect(bookFormReducer(currentState, action)).toEqual(
+          immutableMap({
+            bookTitle: '',
+            bookAuthor: '',
+          })
+        );
       });
     });
   });
@@ -56,15 +60,16 @@ describe('booksReducer', () => {
     };
 
     it('returns a new state with the changed values', () => {
-      const currentState = {
+      const currentState = immutableMap({
         bookTitle: 'Current title',
         bookAuthor: 'Current author',
-      };
-
-      expect(bookFormReducer(currentState, action)).toEqual({
-        bookTitle: action.title,
-        bookAuthor: currentState.bookAuthor,
       });
+      expect(bookFormReducer(currentState, action)).toEqual(
+        immutableMap({
+          bookTitle: action.title,
+          bookAuthor: currentState.get('bookAuthor'),
+        })
+      );
     });
   });
 
@@ -76,52 +81,48 @@ describe('booksReducer', () => {
     };
 
     it('returns a new state with the changed values', () => {
-      const currentState = {
+      const currentState = immutableMap({
         bookTitle: 'Current title',
         bookAuthor: 'Current author',
-      };
-
-      expect(bookFormReducer(currentState, action)).toEqual({
-        bookTitle: currentState.bookTitle,
-        bookAuthor: action.author,
       });
+      expect(bookFormReducer(currentState, action)).toEqual(
+        immutableMap({
+          bookTitle: currentState.get('bookTitle'),
+          bookAuthor: action.author,
+        })
+      );
     });
   });
 
-  describe('selector getBookTitle', () => {
+  describe('selector getBookFormState', () => {
     describe('when state.bookFormReducer is defined', () => {
-      const bookTitle = 'Title';
-      const state = { bookFormReducer: { bookTitle } };
+      describe('when bookTitle and bookAuthor is defined', () => {
+        const bookTitle = 'Title';
+        const bookAuthor = 'Author';
+        const state = {
+          bookFormReducer: immutableMap({
+            bookTitle,
+            bookAuthor,
+          }),
+        };
 
-      it('returns the bookTitle', () => {
-        expect(getBookTitle(state)).toBe(bookTitle);
+        it('returns an object containing the title and author', () => {
+          expect(getBookFormState(state)).toEqual({
+            bookTitle,
+            bookAuthor,
+          });
+        });
       });
     });
 
     describe('when state.bookFormReducer is undefined', () => {
       const state = { bookFormReducer: undefined };
 
-      it('returns empty string', () => {
-        expect(getBookTitle(state)).toBe('');
-      });
-    });
-  });
-
-  describe('selector getBookAuthor', () => {
-    describe('when state.bookFormReducer is defined', () => {
-      const bookAuthor = 'Author';
-      const state = { bookFormReducer: { bookAuthor } };
-
-      it('returns the bookAuthor', () => {
-        expect(getBookAuthor(state)).toBe(bookAuthor);
-      });
-    });
-
-    describe('when state.bookFormReducer is undefined', () => {
-      const state = { bookFormReducer: undefined };
-
-      it('returns empty string', () => {
-        expect(getBookAuthor(state)).toBe('');
+      it('returns an object containing empty title and author', () => {
+        expect(getBookFormState(state)).toEqual({
+          bookTitle: '',
+          bookAuthor: '',
+        });
       });
     });
   });

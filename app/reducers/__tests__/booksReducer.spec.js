@@ -1,13 +1,14 @@
 import expect from 'expect';
 import * as types from '../../constants';
 import { booksReducer, getBookItems } from '../../reducers/booksReducer';
+import { List as immutableList } from 'immutable';
 
 describe('booksReducer', () => {
   describe('when state is undefined', () => {
     const state = undefined;
 
     it('returns an initial state', () => {
-      expect(booksReducer(state)).toEqual([]);
+      expect(booksReducer(state)).toEqual(immutableList());
     });
   });
 
@@ -15,7 +16,7 @@ describe('booksReducer', () => {
     const action = { type: undefined };
 
     it('returns state unchanged', () => {
-      const initialState = [];
+      const initialState = immutableList();
       expect(booksReducer(initialState, action)).toEqual(initialState);
     });
   });
@@ -24,12 +25,15 @@ describe('booksReducer', () => {
     const action = { type: types.ADD_BOOK, title: 'Title', author: 'Author' };
 
     describe('when current state is empty', () => {
-      const currentState = [];
+      const currentState = immutableList();
 
       it('adds a new book object to the state', () => {
-        expect(booksReducer(currentState, action)).toEqual([
-          { bookTitle: action.title, bookAuthor: action.author },
-        ]);
+        expect(booksReducer(currentState, action)).toEqual(
+          immutableList.of({
+            bookTitle: action.title,
+            bookAuthor: action.author,
+          })
+        );
       });
     });
 
@@ -38,21 +42,21 @@ describe('booksReducer', () => {
         bookTitle: 'First Title',
         bookAuthor: 'First Author',
       };
-      const currentState = [
-        firstBookObject,
-      ];
+      const currentState = immutableList.of(firstBookObject);
 
       it('adds a new book object last in the state array', () => {
-        expect(booksReducer(currentState, action)).toEqual([
-          {
-            bookTitle: firstBookObject.bookTitle,
-            bookAuthor: firstBookObject.bookAuthor,
-          },
-          {
-            bookTitle: action.title,
-            bookAuthor: action.author,
-          },
-        ]);
+        expect(booksReducer(currentState, action)).toEqual(
+          immutableList.of(
+            {
+              bookTitle: firstBookObject.bookTitle,
+              bookAuthor: firstBookObject.bookAuthor,
+            },
+            {
+              bookTitle: action.title,
+              bookAuthor: action.author,
+            }
+          )
+        );
       });
     });
   });
@@ -60,10 +64,11 @@ describe('booksReducer', () => {
   describe('selector getBookItems', () => {
     describe('when state.booksReducer is defined', () => {
       const bookItem = {};
-      const state = { booksReducer: [bookItem] };
+      const state = { booksReducer: immutableList.of(bookItem) };
 
       it('returns the bookItems', () => {
-        expect(getBookItems(state)).toEqual([bookItem]);
+        expect(getBookItems(state))
+          .toEqual(immutableList.of(bookItem).toArray());
       });
     });
 

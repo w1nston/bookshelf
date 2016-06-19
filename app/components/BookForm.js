@@ -5,7 +5,7 @@ import BookAuthorInput from '../containers/BookAuthorInput';
 
 function BookForm(props) {
   function handleSubmit() {
-    props.onSubmit(props.title, props.author);
+    props.onSubmit(props.bookTitle, props.bookAuthor);
   }
 
   return (
@@ -19,8 +19,8 @@ function BookForm(props) {
 
 BookForm.displayName = 'BookForm';
 BookForm.propTypes = {
-  title: PropTypes.string,
-  author: PropTypes.string,
+  bookTitle: PropTypes.string,
+  bookAuthor: PropTypes.string,
   onSubmit: PropTypes.func,
 };
 

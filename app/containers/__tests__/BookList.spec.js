@@ -3,6 +3,7 @@ import expect from 'expect';
 import { shallowWithStore } from '../../../utils/redux-spec-utils';
 import BookListContainer from '../BookList';
 import BookList from '../../components/BookList';
+import { List as immutableList } from 'immutable';
 
 describe('BookList container', () => {
   it('connects a BookList', () => {
@@ -11,9 +12,9 @@ describe('BookList container', () => {
   });
 
   it('maps prop bookItems from state', () => {
-    const bookItems = [];
+    const bookItems = immutableList.of([]);
     const state = { booksReducer: bookItems };
     const component = shallowWithStore(<BookListContainer />, state);
-    expect(component.props().bookItems).toBe(bookItems);
+    expect(component.props().bookItems).toEqual(bookItems.toArray());
   });
 });

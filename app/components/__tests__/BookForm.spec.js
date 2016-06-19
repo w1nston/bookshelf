@@ -26,11 +26,11 @@ describe('BookForm', () => {
   });
 
   it('sets propType title', () => {
-    expect(BookForm.propTypes.title).toBe(PropTypes.string);
+    expect(BookForm.propTypes.bookTitle).toBe(PropTypes.string);
   });
 
   it('sets propType author', () => {
-    expect(BookForm.propTypes.author).toBe(PropTypes.string);
+    expect(BookForm.propTypes.bookAuthor).toBe(PropTypes.string);
   });
 
   describe('SubmitButton', () => {
@@ -47,18 +47,18 @@ describe('BookForm', () => {
     describe('onSubmit', () => {
       const onSubmit = createSpy();
 
-      it('triggers callback with title and author', () => {
-        const title = 'Title';
-        const author = 'Author';
+      it('triggers callback with bookTitle and bookAuthor', () => {
+        const bookTitle = 'Title';
+        const bookAuthor = 'Author';
         const component = shallow(
           <BookForm
-            title={title}
-            author={author}
+            bookTitle={bookTitle}
+            bookAuthor={bookAuthor}
             onSubmit={onSubmit}
           />
         );
         component.find(SubmitButton).simulate('submit');
-        expect(onSubmit).toHaveBeenCalledWith(title, author);
+        expect(onSubmit).toHaveBeenCalledWith(bookTitle, bookAuthor);
       });
     });
   });

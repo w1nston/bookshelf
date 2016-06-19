@@ -1,4 +1,7 @@
 import * as types from '../constants';
+import { List as immutableList } from 'immutable';
+
+const initialState = immutableList();
 
 function bookReducer(state, action) {
   switch (action.type) {
@@ -12,13 +15,10 @@ function bookReducer(state, action) {
   }
 }
 
-export function booksReducer(state = [], action = {}) {
+export function booksReducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.ADD_BOOK:
-      return [
-        ...state,
-        bookReducer(undefined, action),
-      ];
+      return state.push(bookReducer(undefined, action));
     default:
       return state;
   }
@@ -27,7 +27,7 @@ export function booksReducer(state = [], action = {}) {
 export function getBookItems(state) {
   const reducer = state.booksReducer;
   if (reducer) {
-    return reducer;
+    return reducer.toArray();
   }
   return [];
 }

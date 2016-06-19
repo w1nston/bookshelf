@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import * as bookActions from '../actions/booksActions';
-import { getBookAuthor } from '../reducers/bookFormReducer';
+import { getBookFormState } from '../reducers/bookFormReducer';
 import BookAuthorInput from '../components/BookAuthorInput';
 
 function mapStateToProps(state) {
   return {
-    text: getBookAuthor(state),
+    text: getBookFormState(state).bookAuthor,
   };
 }
 

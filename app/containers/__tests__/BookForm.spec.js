@@ -4,6 +4,8 @@ import { shallowWithStore } from '../../../utils/redux-spec-utils';
 import BookFormContainer from '../BookForm';
 import BookForm from '../../components/BookForm';
 import * as bookActions from '../../actions/booksActions';
+import { Map as immutableMap } from 'immutable';
+import { getBookFormState } from '../../reducers/bookFormReducer';
 
 describe('BookForm container', () => {
   it('connects a BookForm', () => {
@@ -12,15 +14,15 @@ describe('BookForm container', () => {
   });
 
   it('maps prop title from state', () => {
-    const state = { bookFormReducer: { bookTitle: 'Book Title' } };
+    const state = { bookFormReducer: immutableMap({ bookTitle: 'Book Title' }) };
     const component = shallowWithStore(<BookFormContainer />, state);
-    expect(component.props().title).toBe(state.bookFormReducer.bookTitle);
+    expect(component.props().bookTitle).toBe(getBookFormState(state).bookTitle);
   });
 
   it('maps prop author from state', () => {
-    const state = { bookFormReducer: { bookAuthor: 'Book Author' } };
+    const state = { bookFormReducer: immutableMap({ bookAuthor: 'Book Author' }) };
     const component = shallowWithStore(<BookFormContainer />, state);
-    expect(component.props().author).toBe(state.bookFormReducer.bookAuthor);
+    expect(component.props().bookAuthor).toBe(getBookFormState(state).bookAuthor);
   });
 
   it('maps dispatch to prop onSubmit', () => {
