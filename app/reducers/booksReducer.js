@@ -30,7 +30,9 @@ export function booksReducer(state = initialState, action = {}) {
 export function getBookItems(state) {
   const reducer = state.booksReducer;
   if (reducer) {
-    return reducer.toArray();
+    return reducer
+      .toArray()
+      .map(item => item.toObject());
   }
   return [];
 }

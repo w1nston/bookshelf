@@ -68,12 +68,21 @@ describe('booksReducer', () => {
 
   describe('selector getBookItems', () => {
     describe('when state.booksReducer is defined', () => {
-      const bookItem = immutableMap({});
+      const bookItem = immutableMap({
+        bookTitle: 'Title',
+        bookAuthor: 'Author',
+      });
+
       const state = { booksReducer: immutableList.of(bookItem) };
 
-      it('returns the bookItems', () => {
+      it('returns the bookItems as pojsos', () => {
         expect(getBookItems(state))
-          .toEqual(immutableList.of(bookItem).toArray());
+          .toEqual([
+            {
+              bookTitle: bookItem.get('bookTitle'),
+              bookAuthor: bookItem.get('bookAuthor'),
+            },
+          ]);
       });
     });
 

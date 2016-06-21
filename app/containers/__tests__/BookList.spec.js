@@ -12,7 +12,7 @@ describe('BookList container', () => {
   });
 
   it('maps prop bookItems from state', () => {
-    const bookItems = immutableList.of([]);
+    const bookItems = immutableList();
     const state = { booksReducer: bookItems };
     const component = shallowWithStore(<BookListContainer />, state);
     expect(component.props().bookItems).toEqual(bookItems.toArray());
