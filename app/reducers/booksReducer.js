@@ -1,15 +1,18 @@
 import * as types from '../constants';
-import { List as immutableList } from 'immutable';
+import {
+  List as immutableList,
+  Map as immutableMap,
+} from 'immutable';
 
 const initialState = immutableList();
 
 function bookReducer(state, action) {
   switch (action.type) {
     case types.ADD_BOOK:
-      return {
+      return immutableMap({
         bookTitle: action.title,
         bookAuthor: action.author,
-      };
+      });
     default:
       return state;
   }

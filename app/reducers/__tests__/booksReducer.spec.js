@@ -1,7 +1,10 @@
 import expect from 'expect';
 import * as types from '../../constants';
 import { booksReducer, getBookItems } from '../../reducers/booksReducer';
-import { List as immutableList } from 'immutable';
+import {
+  List as immutableList,
+  Map as immutableMap,
+} from 'immutable';
 
 describe('booksReducer', () => {
   describe('when state is undefined', () => {
@@ -29,32 +32,34 @@ describe('booksReducer', () => {
 
       it('adds a new book object to the state', () => {
         expect(booksReducer(currentState, action)).toEqual(
-          immutableList.of({
-            bookTitle: action.title,
-            bookAuthor: action.author,
-          })
+          immutableList.of(
+            immutableMap({
+              bookTitle: action.title,
+              bookAuthor: action.author,
+            })
+          )
         );
       });
     });
 
     describe('when current state contains elements', () => {
-      const firstBookObject = {
+      const firstBookObject = immutableMap({
         bookTitle: 'First Title',
         bookAuthor: 'First Author',
-      };
+      });
       const currentState = immutableList.of(firstBookObject);
 
       it('adds a new book object last in the state array', () => {
         expect(booksReducer(currentState, action)).toEqual(
           immutableList.of(
-            {
-              bookTitle: firstBookObject.bookTitle,
-              bookAuthor: firstBookObject.bookAuthor,
-            },
-            {
+            immutableMap({
+              bookTitle: firstBookObject.get('bookTitle'),
+              bookAuthor: firstBookObject.get('bookAuthor'),
+            }),
+            immutableMap({
               bookTitle: action.title,
               bookAuthor: action.author,
-            }
+            })
           )
         );
       });
@@ -63,7 +68,7 @@ describe('booksReducer', () => {
 
   describe('selector getBookItems', () => {
     describe('when state.booksReducer is defined', () => {
-      const bookItem = {};
+      const bookItem = immutableMap({});
       const state = { booksReducer: immutableList.of(bookItem) };
 
       it('returns the bookItems', () => {
