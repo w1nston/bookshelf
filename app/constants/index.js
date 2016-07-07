@@ -1,3 +1,5 @@
 export const ADD_BOOK = 'ADD_BOOK';
 export const TITLE_CHANGE = 'TITLE_CHANGE';
 export const AUTHOR_CHANGE = 'AUTHOR_CHANGE';
+export const FETCH_ALL_BOOKS = 'FETCH_ALL_BOOKS';
+export const FETCH_ALL_BOOKS_SUCCESS = 'FETCH_ALL_BOOKS_SUCCESS';
