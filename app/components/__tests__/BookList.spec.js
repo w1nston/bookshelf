@@ -3,6 +3,7 @@ import expect from 'expect';
 import { shallow } from 'enzyme';
 import BookList from '../BookList';
 import BookItem from '../BookItem';
+import FontAwesome from '../FontAwesome';
 
 describe('BookList', () => {
   it('sets displayName', () => {
@@ -55,6 +56,52 @@ describe('BookList', () => {
           const component = shallow(<BookList bookItems={bookItems} />);
           expect(component.find(BookItem).length).toBe(bookItems.length);
         });
+      });
+    });
+  });
+
+  describe('prop isFetching', () => {
+    it('is declared in propTypes', () => {
+      expect(BookList.propTypes.isFetching).toBe(PropTypes.bool);
+    });
+
+    describe('when it is true', () => {
+      const isFetching = true;
+
+      it('renders a FontAwesome icon to indicate loading', () => {
+        const component = shallow(<BookList isFetching={isFetching} />);
+        const fontAwesomeIcon = component.find(FontAwesome);
+        expect(fontAwesomeIcon.length).toBe(1);
+        expect(fontAwesomeIcon.props().icons).toEqual([
+          'spinner',
+          'spin',
+          '3x',
+          'fw',
+        ]);
+      });
+
+      describe('when there are book items', () => {
+        const bookItem = { title: 'Title', author: 'Author' };
+        const bookItems = [bookItem];
+
+        it('does not render any book items', () => {
+          const component = shallow(
+            <BookList
+              isFetching={isFetching}
+              bookItems={bookItems}
+            />
+          );
+          expect(component.find(BookItem).length).toBe(0);
+        });
+      });
+    });
+
+    describe('when it is false', () => {
+      const isFetching = false;
+
+      it('does not render a font awesome icon', () => {
+        const component = shallow(<BookList isFetching={isFetching} />);
+        expect(component.find(FontAwesome).length).toBe(0);
       });
     });
   });
