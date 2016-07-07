@@ -21,3 +21,16 @@ export function authorChange(author) {
     author,
   };
 }
+
+export function requestBooks() {
+  return {
+    type: types.FETCH_ALL_BOOKS,
+  };
+}
+
+export function receiveBooks(books) {
+  return {
+    type: types.FETCH_ALL_BOOKS_SUCCESS,
+    books,
+  };
+}
