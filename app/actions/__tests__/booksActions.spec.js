@@ -70,4 +70,12 @@ describe('receiveBooks', () => {
       expect(actions.receiveBooks(books).books).toBe(books);
     });
   });
+
+  describe('when books is undefined', () => {
+    const books = undefined;
+
+    it('returns an action containing an empty array', () => {
+      expect(actions.receiveBooks(books).books).toEqual([]);
+    });
+  });
 });

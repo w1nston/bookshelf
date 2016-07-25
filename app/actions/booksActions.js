@@ -28,7 +28,7 @@ export function requestBooks() {
   };
 }
 
-export function receiveBooks(books) {
+export function receiveBooks(books = []) {
   return {
     type: types.FETCH_ALL_BOOKS_SUCCESS,
     books,
