@@ -36,8 +36,9 @@ export function booksReducer(state = initialState, action = {}) {
       const fetchedBooks = immutableList(
         action.books.map(immutableMap)
       );
-      const newState = state.update('books', () => fetchedBooks);
-      return newState.update('isFetching', () => false);
+      return state
+        .update('books', () => fetchedBooks)
+        .update('isFetching', () => false);
     }
     default:
       return state;
