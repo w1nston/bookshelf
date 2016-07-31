@@ -79,3 +79,16 @@ describe('receiveBooks', () => {
     });
   });
 });
+
+describe('createdBook', () => {
+  it('returns an action with type', () => {
+    expect(actions.createdBook().type).toBe(types.FETCH_CREATE_BOOK_RESPONSE);
+  });
+
+  describe('when success is defined', () => {
+    it('returns an action containing the success status', () => {
+      const success = true;
+      expect(actions.createdBook(success).success).toBe(success);
+    });
+  });
+});

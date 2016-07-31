@@ -34,3 +34,10 @@ export function receiveBooks(books = []) {
     books,
   };
 }
+
+export function createdBook(success) {
+  return {
+    type: types.FETCH_CREATE_BOOK_RESPONSE,
+    success,
+  }
+}
