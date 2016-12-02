@@ -1,6 +1,7 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 import { shallow } from 'enzyme';
 
-export function shallowWithStore(Component, state = {}, dispatch = () => ({})) {
+export default function shallowWithStore(Component, state = {}, dispatch = () => ({})) {
   const context = {
     store: {
       getState: () => state,

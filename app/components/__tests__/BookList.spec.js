@@ -6,10 +6,6 @@ import BookItem from '../BookItem';
 import FontAwesome from '../FontAwesome';
 
 describe('BookList', () => {
-  it('sets displayName', () => {
-    expect(BookList.displayName).toBe('BookList');
-  });
-
   it('renders a container component', () => {
     const component = shallow(<BookList />);
     expect(component.type()).toBe('table');
@@ -43,10 +39,6 @@ describe('BookList', () => {
   });
 
   describe('bookItems', () => {
-    it('is declared in propTypes', () => {
-      expect(BookList.propTypes.bookItems).toBe(PropTypes.array);
-    });
-
     describe('when defined', () => {
       describe('with items', () => {
         const bookItem = { title: 'Title', author: 'Author' };
@@ -89,7 +81,7 @@ describe('BookList', () => {
             <BookList
               isFetching={isFetching}
               bookItems={bookItems}
-            />
+            />,
           );
           expect(component.find(BookItem).length).toBe(0);
         });

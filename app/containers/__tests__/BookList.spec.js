@@ -1,12 +1,12 @@
 import React from 'react';
 import expect from 'expect';
-import { shallowWithStore } from '../../../utils/redux-spec-utils';
-import BookListContainer from '../BookList';
-import BookList from '../../components/BookList';
 import {
   List as immutableList,
   Map as immutableMap,
 } from 'immutable';
+import shallowWithStore from '../../../utils/redux-spec-utils';
+import BookListContainer from '../BookList';
+import BookList from '../../components/BookList';
 
 describe('BookList container', () => {
   it('connects a BookList', () => {

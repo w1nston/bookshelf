@@ -1,8 +1,8 @@
-import * as types from '../constants';
 import {
   List as immutableList,
   Map as immutableMap,
 } from 'immutable';
+import * as types from '../constants';
 
 const initialState = immutableMap({
   books: immutableList(),
@@ -24,7 +24,7 @@ function bookReducer(state, action) {
 export function booksReducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.ADD_BOOK: {
-      const bookListUpdater = (books) => (
+      const bookListUpdater = books => (
         books.push(bookReducer(undefined, action))
       );
       return state.update('books', bookListUpdater);
@@ -34,7 +34,7 @@ export function booksReducer(state = initialState, action = {}) {
     }
     case types.FETCH_ALL_BOOKS_SUCCESS: {
       const fetchedBooks = immutableList(
-        action.books.map(immutableMap)
+        action.books.map(immutableMap),
       );
       return state
         .update('books', () => fetchedBooks)

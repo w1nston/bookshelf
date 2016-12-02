@@ -1,14 +1,14 @@
 import expect from 'expect';
+import {
+  List as immutableList,
+  Map as immutableMap,
+} from 'immutable';
 import * as types from '../../constants';
 import {
   booksReducer,
   getBookItems,
   getFetchingStatus,
 } from '../../reducers/booksReducer';
-import {
-  List as immutableList,
-  Map as immutableMap,
-} from 'immutable';
 
 describe('booksReducer', () => {
   describe('when state is undefined', () => {
@@ -19,7 +19,7 @@ describe('booksReducer', () => {
         immutableMap({
           books: immutableList(),
           isFetching: false,
-        })
+        }),
       );
     });
   });
@@ -53,10 +53,10 @@ describe('booksReducer', () => {
               immutableMap({
                 title: 'Title',
                 author: 'Author',
-              })
+              }),
             ),
             isFetching: false,
-          })
+          }),
         );
       });
     });
@@ -82,10 +82,10 @@ describe('booksReducer', () => {
               immutableMap({
                 title: action.title,
                 author: action.author,
-              })
+              }),
             ),
             isFetching: false,
-          })
+          }),
         );
       });
     });
@@ -122,8 +122,8 @@ describe('booksReducer', () => {
           immutableMap({
             title: fetchedBooks[0].title,
             author: fetchedBooks[0].author,
-          })
-        )
+          }),
+        ),
       );
     });
 

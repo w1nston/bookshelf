@@ -55,7 +55,7 @@ describe('BookForm', () => {
             bookTitle={bookTitle}
             bookAuthor={bookAuthor}
             onSubmit={onSubmit}
-          />
+          />,
         );
         component.find(SubmitButton).simulate('submit');
         expect(onSubmit).toHaveBeenCalledWith(bookTitle, bookAuthor);

@@ -14,7 +14,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(sagaMiddleware)
+  applyMiddleware(sagaMiddleware),
 );
 
 sagaMiddleware.run(booksSaga);
@@ -25,5 +25,5 @@ ReactDOM.render(
   <Provider store={store}>
     <BookshelfApp />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'), // eslint-disable-line no-undef
 );

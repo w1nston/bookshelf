@@ -10,9 +10,9 @@ function stringIsEmpty(str) {
   return str === '' || str === undefined || str === null;
 }
 
-export const bookshelfApi = {
+const bookshelfApi = {
   getBooks() {
-    return fetch(`${apiBaseURL}/books`)
+    return fetch(`${apiBaseURL}/books`) // eslint-disable-line no-undef
       .then(parseJSONFromResponse)
       .catch(error =>
         console.error('something went wrong attempting to fetch books:', error));
@@ -23,7 +23,7 @@ export const bookshelfApi = {
       return false;
     }
 
-    return fetch(`${apiBaseURL}/books`, {
+    return fetch(`${apiBaseURL}/books`, { // eslint-disable-line no-undef
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -36,3 +36,5 @@ export const bookshelfApi = {
       .catch(() => false);
   },
 };
+
+export default bookshelfApi;

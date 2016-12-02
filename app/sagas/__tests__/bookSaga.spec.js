@@ -8,7 +8,7 @@ import booksSaga, {
   watchCreateBook,
   watchFetchBooks,
 } from '../booksSaga';
-import { bookshelfApi } from '../../services';
+import bookshelfApi from '../../services';
 import * as actions from '../../actions/booksActions';
 import {
   ADD_BOOK,
@@ -24,7 +24,7 @@ describe('book sagas', () => {
       it('yields a call to bookshelfApi.createBook', () => {
         const next = generator.next();
         expect(next.value).toEqual(
-          call(bookshelfApi.createBook, action.title, action.author)
+          call(bookshelfApi.createBook, action.title, action.author),
         );
       });
 

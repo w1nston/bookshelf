@@ -1,5 +1,5 @@
-import * as types from '../constants';
 import { Map as immutableMap } from 'immutable';
+import * as types from '../constants';
 
 const initialBookFormState = immutableMap({
   bookTitle: '',

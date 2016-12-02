@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga';
 import { put, call, fork } from 'redux-saga/effects';
 import * as actions from '../actions/booksActions';
-import { bookshelfApi } from '../services';
+import bookshelfApi from '../services';
 import { FETCH_ALL_BOOKS, ADD_BOOK } from '../constants';
 
 export function *fetchBooks() {

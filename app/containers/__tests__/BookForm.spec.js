@@ -1,10 +1,10 @@
 import React from 'react';
 import expect, { createSpy } from 'expect';
-import { shallowWithStore } from '../../../utils/redux-spec-utils';
+import { Map as immutableMap } from 'immutable';
+import shallowWithStore from '../../../utils/redux-spec-utils';
 import BookFormContainer from '../BookForm';
 import BookForm from '../../components/BookForm';
 import * as bookActions from '../../actions/booksActions';
-import { Map as immutableMap } from 'immutable';
 import { getBookFormState } from '../../reducers/bookFormReducer';
 
 describe('BookForm container', () => {

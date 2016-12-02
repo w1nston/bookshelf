@@ -1,10 +1,10 @@
 import React from 'react';
 import expect, { createSpy } from 'expect';
-import { shallowWithStore } from '../../../utils/redux-spec-utils';
+import { Map as immutableMap } from 'immutable';
+import shallowWithStore from '../../../utils/redux-spec-utils';
 import BookAuthorInputContainer from '../BookAuthorInput';
 import BookAuthorInput from '../../components/BookAuthorInput';
 import * as bookActions from '../../actions/booksActions';
-import { Map as immutableMap } from 'immutable';
 import { getBookFormState } from '../../reducers/bookFormReducer';
 
 describe('BookAuthorInput container', () => {
@@ -25,12 +25,12 @@ describe('BookAuthorInput container', () => {
     const component = shallowWithStore(
       <BookAuthorInputContainer />,
       undefined,
-      dispatch
+      dispatch,
     );
     const event = { target: { value } };
     component.props().onChange(event);
     expect(dispatch).toHaveBeenCalledWith(
-      bookActions.authorChange(event.target.value)
+      bookActions.authorChange(event.target.value),
     );
   });
 });

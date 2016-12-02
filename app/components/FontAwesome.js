@@ -4,17 +4,14 @@ import classnames from 'classnames';
 function getClassNames(icons = []) {
   return classnames(
     'fa',
-    icons.map(icon => `fa-${icon}`)
+    icons.map(icon => `fa-${icon}`),
   );
 }
 
-function FontAwesome({ icons }) {
-  return <i className={getClassNames(icons)}></i>;
+export default function FontAwesome({ icons }) {
+  return <i className={getClassNames(icons)} />;
 }
 
-FontAwesome.displayName = 'FontAwesome';
 FontAwesome.propTypes = {
-  icons: PropTypes.array,
+  icons: PropTypes.arrayOf(PropTypes.string),
 };
-
-export default FontAwesome;

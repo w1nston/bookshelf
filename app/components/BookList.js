@@ -25,7 +25,7 @@ function renderBookItems(bookItems = [], isFetching) {
   return bookItems.map(renderBookItem);
 }
 
-function BookList(props) {
+export default function BookList({ bookItems, isFetching }) {
   return (
     <table>
       <thead>
@@ -35,16 +35,13 @@ function BookList(props) {
         </tr>
       </thead>
       <tbody>
-        {renderBookItems(props.bookItems, props.isFetching)}
+        {renderBookItems(bookItems, isFetching)}
       </tbody>
     </table>
   );
 }
 
-BookList.displayName = 'BookList';
 BookList.propTypes = {
-  bookItems: PropTypes.array,
+  bookItems: PropTypes.arrayOf(PropTypes.object),
   isFetching: PropTypes.bool,
 };
-
-export default BookList;

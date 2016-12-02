@@ -1,13 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import expect from 'expect';
 import { shallow } from 'enzyme';
 import FontAwesome from '../FontAwesome';
 
 describe('FontAwesome', () => {
-  it('sets displayName', () => {
-    expect(FontAwesome.displayName).toBe('FontAwesome');
-  });
-
   it('renders an i tag for the icon to render in', () => {
     const component = shallow(<FontAwesome />);
     expect(component.type()).toBe('i');
@@ -19,10 +15,6 @@ describe('FontAwesome', () => {
   });
 
   describe('prop icons', () => {
-    it('is declared in propTypes', () => {
-      expect(FontAwesome.propTypes.icons).toBe(PropTypes.array);
-    });
-
     describe('when containing several icons', () => {
       const icons = ['icon1', 'icon2'];
 

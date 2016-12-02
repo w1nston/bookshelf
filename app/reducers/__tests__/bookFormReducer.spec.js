@@ -1,10 +1,10 @@
 import expect from 'expect';
+import { Map as immutableMap } from 'immutable';
 import {
-  bookFormReducer,
-  getBookFormState,
+bookFormReducer,
+getBookFormState,
 } from '../bookFormReducer';
 import * as types from '../../constants';
-import { Map as immutableMap } from 'immutable';
 
 describe('bookFormReducer', () => {
   describe('when state is undefined', () => {
@@ -15,7 +15,7 @@ describe('bookFormReducer', () => {
         immutableMap({
           bookTitle: '',
           bookAuthor: '',
-        })
+        }),
       );
     });
   });
@@ -46,7 +46,7 @@ describe('bookFormReducer', () => {
           immutableMap({
             bookTitle: '',
             bookAuthor: '',
-          })
+          }),
         );
       });
     });
@@ -68,7 +68,7 @@ describe('bookFormReducer', () => {
         immutableMap({
           bookTitle: action.title,
           bookAuthor: currentState.get('bookAuthor'),
-        })
+        }),
       );
     });
   });
@@ -89,7 +89,7 @@ describe('bookFormReducer', () => {
         immutableMap({
           bookTitle: currentState.get('bookTitle'),
           bookAuthor: action.author,
-        })
+        }),
       );
     });
   });
