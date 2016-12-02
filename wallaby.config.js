@@ -1,6 +1,6 @@
-var wallabyWebpack = require('wallaby-webpack');
+const wallabyWebpack = require('wallaby-webpack');
 
-var webpackPostprocessor = wallabyWebpack({
+const webpackPostprocessor = wallabyWebpack({
   module: {
     loaders: [
       { test: /\.json$/, loader: 'json' }
