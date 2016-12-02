@@ -1,22 +1,6 @@
-const wallabyWebpack = require('wallaby-webpack');
-
-const webpackPostprocessor = wallabyWebpack({
-  module: {
-    loaders: [
-      { test: /\.json$/, loader: 'json' }
-    ]
-  },
-  externals: {
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true,
-    'react/addons': true
-  }
-});
-
 module.exports = function (wallaby) {
   return {
     files: [
-      { pattern: 'node_modules/react/dist/react-with-addons.js', instrument: false },
       { pattern: 'index.js', load: false },
       { pattern: 'utils/*.js', load: false },
       { pattern: 'app/**/*.js', load: false },
@@ -24,23 +8,21 @@ module.exports = function (wallaby) {
     ],
 
     tests: [
-      { pattern: 'app/**/__tests__/**/*.spec.js', load: false }
+      'app/**/__tests__/**/*.spec.js'
     ],
 
-    testFramework: 'mocha',
+    env: {
+      type: 'node',
+      runner: 'node',
+      params: {
+        runner: '--harmony'
+      }
+    },
 
     compilers: {
       '**/*.js': wallaby.compilers.babel()
     },
 
-    env: {
-      kind: 'electron'
-    },
-
-    postprocessor: webpackPostprocessor,
-
-    bootstrap: function bootstrap() {
-      window.__moduleBundler.loadTests();
-    }
+    testFramework: 'jest'
   };
 };

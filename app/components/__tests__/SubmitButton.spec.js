@@ -1,13 +1,9 @@
-import React, { PropTypes } from 'react';
-import expect, { createSpy } from 'expect';
+/* global define, it, describe, expect, jest */
+import React from 'react';
 import { shallow } from 'enzyme';
 import SubmitButton from '../SubmitButton';
 
 describe('SubmitButton', () => {
-  it('sets displayName', () => {
-    expect(SubmitButton.displayName).toBe('SubmitButton');
-  });
-
   it('renders a container element', () => {
     const component = shallow(<SubmitButton />);
     expect(component.find('.submit-button-container').length).toBe(1);
@@ -19,10 +15,6 @@ describe('SubmitButton', () => {
   });
 
   describe('prop label', () => {
-    it('is set in propTypes declaration', () => {
-      expect(SubmitButton.propTypes.label).toEqual(PropTypes.string);
-    });
-
     describe('when defined', () => {
       const label = 'Label';
 
@@ -34,12 +26,8 @@ describe('SubmitButton', () => {
   });
 
   describe('prop onSubmit', () => {
-    it('is set in propTypes declaration', () => {
-      expect(SubmitButton.propTypes.onSubmit).toEqual(PropTypes.func);
-    });
-
     describe('when defined', () => {
-      const onSubmit = createSpy();
+      const onSubmit = jest.fn();
 
       it('is connected to the button', () => {
         const component = shallow(<SubmitButton onSubmit={onSubmit} />);

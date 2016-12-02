@@ -1,5 +1,4 @@
-import 'babel-polyfill';
-import expect from 'expect';
+/* global define, it, describe, expect */
 import { takeEvery } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
 import booksSaga, {

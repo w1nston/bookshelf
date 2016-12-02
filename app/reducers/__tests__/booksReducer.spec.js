@@ -1,4 +1,4 @@
-import expect from 'expect';
+/* global define, it, describe, expect */
 import {
   List as immutableList,
   Map as immutableMap,

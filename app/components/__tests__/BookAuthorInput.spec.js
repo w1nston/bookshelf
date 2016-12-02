@@ -1,14 +1,10 @@
-import React, { PropTypes } from 'react';
+/* global define, it, describe, expect, jest */
+import React from 'react';
 import { shallow } from 'enzyme';
-import expect from 'expect';
 import BookAuthorInput from '../BookAuthorInput';
 import TextInput from '../TextInput';
 
 describe('BookAuthorInput', () => {
-  it('sets displayName', () => {
-    expect(BookAuthorInput.displayName).toBe('BookAuthorInput');
-  });
-
   it('renders a TextInput component', () => {
     const component = shallow(<BookAuthorInput />);
     expect(component.find(TextInput).length).toBe(1);
@@ -25,10 +21,6 @@ describe('BookAuthorInput', () => {
   });
 
   describe('prop text', () => {
-    it('is declared in propTypes', () => {
-      expect(BookAuthorInput.propTypes.text).toBe(PropTypes.string);
-    });
-
     describe('when defined', () => {
       const text = 'Text';
 
@@ -40,10 +32,6 @@ describe('BookAuthorInput', () => {
   });
 
   describe('prop onChange', () => {
-    it('is declared in propTypes', () => {
-      expect(BookAuthorInput.propTypes.onChange).toBe(PropTypes.func);
-    });
-
     describe('when defined', () => {
       const onChange = function onChange() {};
 

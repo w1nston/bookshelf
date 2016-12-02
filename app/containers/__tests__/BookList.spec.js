@@ -1,5 +1,5 @@
+/* global define, it, describe, expect */
 import React from 'react';
-import expect from 'expect';
 import {
   List as immutableList,
   Map as immutableMap,

@@ -1,5 +1,5 @@
+/* global define, it, describe, expect, jest */
 import React from 'react';
-import expect, { createSpy } from 'expect';
 import { Map as immutableMap } from 'immutable';
 import shallowWithStore from '../../../utils/redux-spec-utils';
 import BookFormContainer from '../BookForm';
@@ -28,7 +28,7 @@ describe('BookForm container', () => {
   it('maps dispatch to prop onSubmit', () => {
     const title = 'Title';
     const author = 'Author';
-    const dispatch = createSpy();
+    const dispatch = jest.fn();
     const component = shallowWithStore(<BookFormContainer />, undefined, dispatch);
     component.props().onSubmit(title, author);
     expect(dispatch).toHaveBeenCalledWith(bookActions.addBook(title, author));

@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import expect from 'expect';
+/* global define, it, describe, expect */
+import React from 'react';
 import { shallow } from 'enzyme';
 import BookList from '../BookList';
 import BookItem from '../BookItem';
@@ -53,10 +53,6 @@ describe('BookList', () => {
   });
 
   describe('prop isFetching', () => {
-    it('is declared in propTypes', () => {
-      expect(BookList.propTypes.isFetching).toBe(PropTypes.bool);
-    });
-
     describe('when it is true', () => {
       const isFetching = true;
 

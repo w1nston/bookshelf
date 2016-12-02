@@ -1,13 +1,9 @@
-import React, { PropTypes } from 'react';
-import expect from 'expect';
+/* global define, it, describe, expect */
+import React from 'react';
 import { shallow } from 'enzyme';
 import BookItem from '../BookItem';
 
 describe('BookItem', () => {
-  it('sets displayName', () => {
-    expect(BookItem.displayName).toBe('BookItem');
-  });
-
   it('renders a container for its content', () => {
     const component = shallow(<BookItem />);
     expect(component.type()).toBe('tr');
@@ -19,10 +15,6 @@ describe('BookItem', () => {
   });
 
   describe('title', () => {
-    it('is declared in propTypes', () => {
-      expect(BookItem.propTypes.title).toBe(PropTypes.string);
-    });
-
     describe('when defined', () => {
       const title = 'Title';
 
@@ -39,10 +31,6 @@ describe('BookItem', () => {
   });
 
   describe('author', () => {
-    it('is declared in propTypes', () => {
-      expect(BookItem.propTypes.author).toBe(PropTypes.string);
-    });
-
     describe('when defined', () => {
       const author = 'Author';
 

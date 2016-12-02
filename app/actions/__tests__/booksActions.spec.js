@@ -1,4 +1,4 @@
-import expect from 'expect';
+/* global define, it, describe, expect */
 import * as actions from '../booksActions';
 import * as types from '../../constants';
 

@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import expect, { createSpy } from 'expect';
+/* global define, it, describe, expect, jest */
+import React from 'react';
 import { shallow } from 'enzyme';
 import TextInput from '../TextInput';
 
@@ -14,15 +14,7 @@ describe('TextInput', () => {
     expect(component.find('input').length).toBe(1);
   });
 
-  it('has displayName set', () => {
-    expect(TextInput.displayName).toBe('TextInput');
-  });
-
   describe('placeholder', () => {
-    it('is set in propTypes declaration', () => {
-      expect(TextInput.propTypes.placeholder).toEqual(PropTypes.string);
-    });
-
     describe('when defined', () => {
       const placeholder = 'Placeholder';
 
@@ -35,10 +27,6 @@ describe('TextInput', () => {
   });
 
   describe('text', () => {
-    it('is set in propTypes declaration', () => {
-      expect(TextInput.propTypes.text).toEqual(PropTypes.string);
-    });
-
     describe('when defined', () => {
       const text = 'Text';
 
@@ -55,16 +43,12 @@ describe('TextInput', () => {
       it('is not setting text undefined', () => {
         const component = shallow(<TextInput text={text} />);
         const inputElement = component.find('input');
-        expect(inputElement.text()).toNotBe('undefined');
+        expect(inputElement.text()).not.toBe('undefined');
       });
     });
   });
 
   describe('name', () => {
-    it('is set in propTypes declaration', () => {
-      expect(TextInput.propTypes.name).toEqual(PropTypes.string);
-    });
-
     describe('when defined', () => {
       const name = 'Name';
 
@@ -77,12 +61,8 @@ describe('TextInput', () => {
   });
 
   describe('onChange', () => {
-    it('is set in propTypes declaration', () => {
-      expect(TextInput.propTypes.onChange).toBe(PropTypes.func);
-    });
-
     describe('when defined', () => {
-      const onChange = createSpy();
+      const onChange = jest.fn();
 
       it('triggers the provided callback', () => {
         const newValue = 'New value';

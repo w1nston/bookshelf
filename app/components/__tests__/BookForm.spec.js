@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import expect, { createSpy } from 'expect';
+/* global define, it, describe, expect, jest */
+import React from 'react';
 import { shallow } from 'enzyme';
 import BookForm from '../BookForm';
 import BookTitleInput from '../../containers/BookTitleInput';
@@ -7,10 +7,6 @@ import BookAuthorInput from '../../containers/BookAuthorInput';
 import SubmitButton from '../SubmitButton';
 
 describe('BookForm', () => {
-  it('sets displayName', () => {
-    expect(BookForm.displayName).toBe('BookForm');
-  });
-
   it('renders a BookTitleInput', () => {
     const component = shallow(<BookForm />);
     expect(component.find(BookTitleInput).length).toBe(1);
@@ -19,18 +15,6 @@ describe('BookForm', () => {
   it('renders a BookAuthorInput', () => {
     const component = shallow(<BookForm />);
     expect(component.find(BookAuthorInput).length).toBe(1);
-  });
-
-  it('sets propType onSubmit', () => {
-    expect(BookForm.propTypes.onSubmit).toBe(PropTypes.func);
-  });
-
-  it('sets propType title', () => {
-    expect(BookForm.propTypes.bookTitle).toBe(PropTypes.string);
-  });
-
-  it('sets propType author', () => {
-    expect(BookForm.propTypes.bookAuthor).toBe(PropTypes.string);
   });
 
   describe('SubmitButton', () => {
@@ -45,7 +29,7 @@ describe('BookForm', () => {
     });
 
     describe('onSubmit', () => {
-      const onSubmit = createSpy();
+      const onSubmit = jest.fn();
 
       it('triggers callback with bookTitle and bookAuthor', () => {
         const bookTitle = 'Title';

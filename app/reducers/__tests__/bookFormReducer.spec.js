@@ -1,4 +1,4 @@
-import expect from 'expect';
+/* global define, it, describe, expect */
 import { Map as immutableMap } from 'immutable';
 import {
 bookFormReducer,
